@@ -31,15 +31,14 @@ stages:
     - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
       artifact: drop
     
-  - stage: Deploy
-  displayName: Deploy Stage
+- stage: Deploy
   jobs: 
   - deployment: VMDeploy
-  displayName: web
-  environment:
-    name: env1
-    resourceType: VirtualMachine
-  strategy:
+    displayName: web
+    environment:
+     name: env1
+     resourceType: VirtualMachine
+    strategy:
       rolling:
         maxParallel: 2  #for percentages, mention as x%
         preDeploy:
